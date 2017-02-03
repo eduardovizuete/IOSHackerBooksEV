@@ -10,17 +10,21 @@ import Foundation
 
 class Book {
     
+    //MARK: - Aliases
+    typealias tagType = Set<Tag>
+
+    
     //MARK: - StoredProperties
     let title       : String
     let authors     : [String]
-    let tags        : Set<Tag>
+    let tags        : tagType
     let image_url   : URL
     let pdf_url     : URL
     
     //MARK: - Initialization
     init(title: String,
          authors: [String],
-         tags: Set<Tag>,
+         tags: tagType,
          image_url: URL,
          pdf_url: URL)
     {

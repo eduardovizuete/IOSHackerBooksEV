@@ -16,6 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Crear una window de verdad
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // Crear una instancia del modelo
+        do {
+            // array de diccionarios de json
+            let json = try downloadAndSaveJSONFile()
+            
+            // Crear un array de clases de Swift
+            var books = [Book]()
+            
+            for dict in json {
+                do {
+                    let char = try decode(book: dict)
+                    books.append(char)
+                } catch {
+                    print("Error al procesar \(dict)")
+                }
+            }
+            
+            return true
+            
+        } catch {
+            fatalError("Error while loading Model fo JSON")
+        }
+        
         return true
     }
 

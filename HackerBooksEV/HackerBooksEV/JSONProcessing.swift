@@ -24,6 +24,7 @@ import UIKit
 typealias JSONObject        = AnyObject
 typealias JSONDictionary    = [String: JSONObject]
 typealias JSONArray         = [JSONDictionary]
+typealias tagType           = Set<Tag>
 
 //MARK: - Decodification
 func decode(book json: JSONDictionary) throws -> Book {
@@ -48,7 +49,7 @@ func decode(book json: JSONDictionary) throws -> Book {
     }
     
     let listTags: [String] = tags.components(separatedBy: ",")
-    var setTags = Set<Tag>()
+    var setTags = tagType()
     
     for tag in listTags {
         let newTag = Tag.init(name: tag)
@@ -83,8 +84,60 @@ func decode(book json: JSONDictionary?) throws -> Book {
     return try decode(book: json)
 }
 
-// MARK: - Loading from Local
-func loadFromLocalFile(fileName name: String,
+// MARK: - Loading
+
+func downloadAndSaveJSONFile() throws -> JSONArray {
+    let nameJSONBook = "books_readable.json"
+    
+    // Verificar si el archivo existe en local
+    if existLocalFile(filename: nameJSONBook) {
+        // cargar archivo desde local
+        return try loadFromLocalFile(fileName: nameJSONBook)
+    } else {
+        // cargar archivo desde la red
+        return try loadFromNetworkFile(fileName: nameJSONBook)
+    }
+}
+
+func loadFromLocalFile(fileName name: String) throws -> JSONArray {
+    let sourcePaths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let path = sourcePaths[0]
+    let url: URL = URL(fileURLWithPath: name, relativeTo: path)
+    
+    if let data = try? Data(contentsOf: url),
+        let maybeArray = try? JSONSerialization.jsonObject(
+            with: data,
+            options: JSONSerialization.ReadingOptions.mutableContainers) as? JSONArray,
+        let array = maybeArray {
+        return array
+        
+    } else {
+        throw BookError.jsonParsingError
+    }
+}
+
+func loadFromNetworkFile(fileName name: String) throws -> JSONArray {
+    // Descargar los datos desde internet
+    let urlJSONFile = "https://t.co/K9ziV0z3SJ"
+    let jsonFile = try? Data(contentsOf: URL(string: urlJSONFile)!)
+    
+    guard let downloadData = jsonFile else {
+        throw BookError.resourcePointedByURLNotReachable
+    }
+    
+    // almacenar los datos en un archivo
+    let sourcePaths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let path = sourcePaths[0]
+    let file: URL = URL(fileURLWithPath: name, relativeTo: path)
+    let fileManager = FileManager.default
+    
+    fileManager.createFile(atPath: file.path, contents: downloadData, attributes: nil)
+
+    return try loadFromLocalFile(fileName: name)
+}
+
+/*
+func loadFromLocalFileBundle(fileName name: String,
                        bundle: Bundle = Bundle.main) throws -> JSONArray {
     
     if let url = bundle.url(forResource: name),
@@ -100,4 +153,21 @@ func loadFromLocalFile(fileName name: String,
     }
     
 }
+ */
+
+func existLocalFile(filename name: String) -> Bool {
+    let sourcePaths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let path = sourcePaths[0]
+    let file: URL = URL(fileURLWithPath: name, relativeTo: path)
+    let fileManager = FileManager.default
+    
+    if fileManager.fileExists(atPath: file.path) {
+        return true
+    } else {
+        return false
+    }
+}
+
+
+
 

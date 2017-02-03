@@ -10,6 +10,9 @@ import Foundation
 
 class Library {
     
+    //MARK: - Aliases
+    typealias tagType = Set<Tag>
+    
     //MARK: - StoredProperties
     
     // Array de libros
@@ -21,11 +24,11 @@ class Library {
     // Nota instrucciones: dos opciones, un array ordenado
     // (si es favorito, el Tag Favorite esta en la primera posicion)
     // o un Set<Tag>
-    var tags: Set<Tag>
+    var tags: tagType
     
     //MARK: - Initialization
     init(books: [Book],
-         tags: Set<Tag>
+         tags: tagType
         )
     {
         self.books = books

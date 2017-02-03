@@ -8,7 +8,8 @@
 
 import Foundation
 
-extension Bundle{
+/*
+ extension Bundle{
     
     func url(forResource name: String) -> URL?{
         
@@ -20,4 +21,5 @@ extension Bundle{
     }
     
 }
+ */
 
