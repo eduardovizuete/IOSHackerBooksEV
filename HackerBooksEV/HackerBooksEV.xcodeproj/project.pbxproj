@@ -12,6 +12,8 @@
 		8467A6E81E44C01F0096FF52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8467A6E61E44C01F0096FF52 /* Main.storyboard */; };
 		8467A6EA1E44C01F0096FF52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8467A6E91E44C01F0096FF52 /* Assets.xcassets */; };
 		8467A6ED1E44C01F0096FF52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8467A6EB1E44C01F0096FF52 /* LaunchScreen.storyboard */; };
+		84B41C131E44CBBF00277FAA /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B41C121E44CBBF00277FAA /* Book.swift */; };
+		84B41C151E44D66B00277FAA /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B41C141E44D66B00277FAA /* Tag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		8467A6E91E44C01F0096FF52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8467A6EC1E44C01F0096FF52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8467A6EE1E44C01F0096FF52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B41C121E44CBBF00277FAA /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		84B41C141E44D66B00277FAA /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,16 @@
 		8467A6E11E44C01F0096FF52 /* HackerBooksEV */ = {
 			isa = PBXGroup;
 			children = (
+				84B41C101E44C86000277FAA /* Frameworks */,
+				84B41C0F1E44C84400277FAA /* App */,
+			);
+			path = HackerBooksEV;
+			sourceTree = "<group>";
+		};
+		84B41C0F1E44C84400277FAA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				84B41C111E44C89900277FAA /* Models */,
 				8467A6E21E44C01F0096FF52 /* AppDelegate.swift */,
 				8467A6E41E44C01F0096FF52 /* ViewController.swift */,
 				8467A6E61E44C01F0096FF52 /* Main.storyboard */,
@@ -61,7 +75,23 @@
 				8467A6EB1E44C01F0096FF52 /* LaunchScreen.storyboard */,
 				8467A6EE1E44C01F0096FF52 /* Info.plist */,
 			);
-			path = HackerBooksEV;
+			name = App;
+			sourceTree = "<group>";
+		};
+		84B41C101E44C86000277FAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84B41C111E44C89900277FAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				84B41C121E44CBBF00277FAA /* Book.swift */,
+				84B41C141E44D66B00277FAA /* Tag.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B41C151E44D66B00277FAA /* Tag.swift in Sources */,
 				8467A6E51E44C01F0096FF52 /* ViewController.swift in Sources */,
 				8467A6E31E44C01F0096FF52 /* AppDelegate.swift in Sources */,
+				84B41C131E44CBBF00277FAA /* Book.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +331,7 @@
 				8467A6F31E44C01F0096FF52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
