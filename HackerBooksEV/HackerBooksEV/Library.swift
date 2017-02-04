@@ -10,9 +10,6 @@ import Foundation
 
 class Library {
     
-    //MARK: - Aliases
-    typealias tagType = Set<Tag>
-    
     //MARK: - StoredProperties
     
     // Array de libros
@@ -82,6 +79,7 @@ class Library {
         
         return bookAtIndex
     }
+    
 }
 
 

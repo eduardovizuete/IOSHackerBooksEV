@@ -10,7 +10,7 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
 
 
@@ -26,16 +26,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Crear un array de clases de Swift
             var books = [Book]()
+            var setTags = tagType()
             
             for dict in json {
                 do {
-                    let char = try decode(book: dict)
-                    books.append(char)
+                    let aBook = try decode(book: dict)
+                    books.append(aBook)
+                    setTags = setTags.union(aBook.tags)
                 } catch {
                     print("Error al procesar \(dict)")
                 }
             }
             
+            // Ahora podemos crear el modelo
+            let model = Library.init(books: books, tags: setTags)
+
             return true
             
         } catch {

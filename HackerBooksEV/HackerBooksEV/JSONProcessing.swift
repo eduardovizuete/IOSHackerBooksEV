@@ -52,7 +52,7 @@ func decode(book json: JSONDictionary) throws -> Book {
     var setTags = tagType()
     
     for tag in listTags {
-        let newTag = Tag.init(name: tag)
+        let newTag = Tag.init(name: tag.trimmingCharacters(in: NSCharacterSet.whitespaces))
         setTags.insert(newTag)
     }
  
