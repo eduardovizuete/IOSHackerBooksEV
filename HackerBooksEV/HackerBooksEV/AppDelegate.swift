@@ -26,20 +26,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Crear un array de clases de Swift
             var books = [Book]()
-            var setTags = tagType()
+            //var setTags = tagType()
+            var setTags = Set<Tag>()
             
             for dict in json {
                 do {
                     let aBook = try decode(book: dict)
                     books.append(aBook)
-                    setTags = setTags.union(aBook.tags)
+                    setTags = setTags.union(aBook.tags.sorted())
                 } catch {
                     print("Error al procesar \(dict)")
                 }
             }
             
+            var arrayOrderTags = [Tag]()
+
+            for tag in setTags.sorted() {
+                arrayOrderTags.append(tag)
+            }
+            
+            setTags = Set(arrayOrderTags)
+            
+            
             // Ahora podemos crear el modelo
-            let model = Library.init(books: books, tags: setTags)
+            //let model = Library.init(books: books, tags: Set(arrayOrderTags))
+            let model = Library.init(books: books, tags: arrayOrderTags)
 
             return true
             

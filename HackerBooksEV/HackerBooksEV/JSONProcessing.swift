@@ -24,7 +24,7 @@ import UIKit
 typealias JSONObject        = AnyObject
 typealias JSONDictionary    = [String: JSONObject]
 typealias JSONArray         = [JSONDictionary]
-typealias tagType           = Set<Tag>
+typealias tagType           = [Tag]
 
 //MARK: - Decodification
 func decode(book json: JSONDictionary) throws -> Book {
@@ -53,7 +53,8 @@ func decode(book json: JSONDictionary) throws -> Book {
     
     for tag in listTags {
         let newTag = Tag.init(name: tag.trimmingCharacters(in: NSCharacterSet.whitespaces))
-        setTags.insert(newTag)
+        //setTags.insert(newTag)
+        setTags.append(newTag)
     }
  
     // "pdf_url"

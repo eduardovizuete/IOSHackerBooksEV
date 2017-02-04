@@ -11,7 +11,7 @@ import Foundation
 class Book {
     
     //MARK: - Aliases
-    typealias tagType = Set<Tag>
+    typealias tagType = [Tag]
 
     
     //MARK: - StoredProperties
