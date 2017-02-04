@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookViewController" customModule="HackerBooksEV" customModuleProvider="target">
             <connections>
+                <outlet property="photoView" destination="1uK-u4-Ica" id="Ncn-wF-gB4"/>
+                <outlet property="titleLabel" destination="IpZ-9n-elp" id="WZP-KR-AzI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,20 +25,28 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpZ-9n-elp">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1uK-u4-Ica">
-                            <rect key="frame" x="0.0" y="97.5" width="375" height="517.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1uK-u4-Ica">
+                            <rect key="frame" x="0.0" y="98" width="375" height="517"/>
                         </imageView>
                         <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IMp-3g-sIK">
                             <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                             <items>
-                                <barButtonItem title="Read" id="Eeq-Pa-O08"/>
+                                <barButtonItem title="Read" id="Eeq-Pa-O08">
+                                    <connections>
+                                        <action selector="readPDF:" destination="-1" id="pNe-BK-D7J"/>
+                                    </connections>
+                                </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="ecN-hU-kQk"/>
-                                <barButtonItem systemItem="bookmarks" id="M7S-TY-oPO"/>
+                                <barButtonItem systemItem="bookmarks" id="M7S-TY-oPO">
+                                    <connections>
+                                        <action selector="checkFavourite:" destination="-1" id="vAB-oy-aVC"/>
+                                    </connections>
+                                </barButtonItem>
                             </items>
                         </toolbar>
                     </subviews>
