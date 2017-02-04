@@ -28,9 +28,7 @@ class Library {
     
     //MARK: - Initialization
     init(books: [Book],
-         tags: tagType
-        )
-    {
+         tags: tagType) {
         self.books = books
         self.tags = tags
     }

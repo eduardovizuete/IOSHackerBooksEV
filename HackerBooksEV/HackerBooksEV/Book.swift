@@ -18,8 +18,8 @@ class Book {
     let title       : String
     let authors     : [String]
     let tags        : tagType
-    let image_url   : URL
-    let pdf_url     : URL
+    let imageUrl    : URL
+    let pdfUrl      : URL
     
     //MARK: - Initialization
     init(title: String,
@@ -31,8 +31,36 @@ class Book {
         self.title = title
         self.authors = authors
         self.tags = tags
-        self.image_url = image_url
-        self.pdf_url = pdf_url
+        self.imageUrl = image_url
+        self.pdfUrl = pdf_url
     }
     
+    //MARK: - Proxies
+    func proxieForEquality() -> String {
+        return "\(title)"
+    }
+    
+    func proxyForComparison() -> String {
+        return proxieForEquality()
+    }
 }
+
+//MARK: - Protocols
+extension Book: Equatable {
+    public static func ==(lhs: Book, rhs: Book) -> Bool {
+        return (lhs.proxieForEquality() == rhs.proxieForEquality())
+    }
+}
+
+extension Book : Comparable {
+    public static func <(lhs: Book,
+                         rhs: Book) -> Bool {
+        return (lhs.proxyForComparison() < rhs.proxyForComparison())
+    }
+}
+
+
+
+
+
+
