@@ -56,10 +56,10 @@ class Library {
     // Un libro puede estar en una o mas tematicas. Si no hay
     // libros para una tematica, ha de devolver nil
     func books(forTagName name: Tag) -> [Book]? {
-        var booksByTag: [Book]?
+        var booksByTag = [Book]()
         for book in books {
             if (book.tags.contains(name)) {
-                booksByTag?.append(book)
+                booksByTag.append(book)
             }
         }
         

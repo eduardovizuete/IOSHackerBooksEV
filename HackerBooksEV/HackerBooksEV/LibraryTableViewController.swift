@@ -51,13 +51,25 @@ class LibraryTableViewController: UITableViewController {
         
         // Averiguar cual es el libro
         let tagNamebyIndex = model.tags[indexPath.section]
+        var booksbyTag = model.books(forTagName: tagNamebyIndex)
+        let book = booksbyTag?[indexPath.row]
         
         // Crear la celda
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
+        
+        if cell == nil {
+            // el opcional esta vacio y toca crear la celda desde cero
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
+        }
         
         // Configurarla
+        let stringImage = book?.imageUrl.absoluteString
+        cell?.imageView?.image = UIImage(named: stringImage!)
+        cell?.textLabel?.text = book?.title
+        cell?.detailTextLabel?.text = book?.authors.description
         
         // Devolverla
-        return UITableViewCell()
+        return cell!
     }
 
 }

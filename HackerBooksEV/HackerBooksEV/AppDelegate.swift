@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 do {
                     let aBook = try decode(book: dict)
                     books.append(aBook)
-                    setTags = setTags.union(aBook.tags.sorted())
+                    setTags = setTags.union(aBook.tags)
                 } catch {
                     print("Error al procesar \(dict)")
                 }
@@ -45,13 +45,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 arrayOrderTags.append(tag)
             }
             
-            setTags = Set(arrayOrderTags)
-            
-            
             // Ahora podemos crear el modelo
-            //let model = Library.init(books: books, tags: Set(arrayOrderTags))
-            let model = Library.init(books: books, tags: arrayOrderTags)
-
+            let model = Library.init(books: books.sorted(), tags: arrayOrderTags)
+            
+            // Crear el LibraryTableViewController
+            let lVC = LibraryTableViewController(model: model)
+            lVC.title = "Hacker Books"
+            
+            // Insertar en un Nav
+            let lNav = UINavigationController(rootViewController: lVC)
+           
+            // Establecer root window
+            window?.rootViewController = lNav
+            
+            // Mostrar la window
+            window?.makeKeyAndVisible()
+            
             return true
             
         } catch {
