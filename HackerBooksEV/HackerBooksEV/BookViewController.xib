@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookViewController" customModule="HackerBooksEV" customModuleProvider="target">
             <connections>
+                <outlet property="favoriteItem" destination="M7S-TY-oPO" id="m2J-I8-74k"/>
                 <outlet property="photoView" destination="1uK-u4-Ica" id="Ncn-wF-gB4"/>
-                <outlet property="titleLabel" destination="IpZ-9n-elp" id="WZP-KR-AzI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,17 +24,11 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RYA-RO-wgD" userLabel="Root Stack View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpZ-9n-elp">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1uK-u4-Ica">
-                            <rect key="frame" x="0.0" y="98" width="375" height="517"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
                         </imageView>
                         <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IMp-3g-sIK">
-                            <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="525" width="375" height="142"/>
                             <items>
                                 <barButtonItem title="Read" id="Eeq-Pa-O08">
                                     <connections>
@@ -42,7 +36,7 @@
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="ecN-hU-kQk"/>
-                                <barButtonItem systemItem="bookmarks" id="M7S-TY-oPO">
+                                <barButtonItem title="☆" id="M7S-TY-oPO">
                                     <connections>
                                         <action selector="checkFavourite:" destination="-1" id="vAB-oy-aVC"/>
                                     </connections>

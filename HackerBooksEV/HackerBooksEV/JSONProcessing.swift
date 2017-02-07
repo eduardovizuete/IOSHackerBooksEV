@@ -69,11 +69,20 @@ func decode(book json: JSONDictionary) throws -> Book {
             throw BookError.resourcePointedByURLNotReachable
     }
     
+    let mainBundle = Bundle.main
+    
+    let defaultImage = mainBundle.url(forResource: "emptyBookCover", withExtension: "png")!
+    let defaultPdf = mainBundle.url(forResource: "emptyPdf", withExtension: "pdf")!
+    
+    // AsyncData
+    let image = AsyncData(url: urlImage, defaultData: try! Data(contentsOf: defaultImage))
+    let pdf = AsyncData(url: urlpdf, defaultData: try! Data(contentsOf: defaultPdf))
+    
     return Book.init(title: title,
                      authors: listAuthors,
                      tags: setTags,
-                     image_url: urlImage,
-                     pdf_url: urlpdf)
+                     image_url: image,
+                     pdf_url: pdf)
     
 }
 
